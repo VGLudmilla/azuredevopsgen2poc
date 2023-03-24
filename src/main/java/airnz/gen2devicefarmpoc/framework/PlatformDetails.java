@@ -125,7 +125,7 @@ public class PlatformDetails {
         capabilities.setCapability("platformVersion", getPlatformVersion());
         capabilities.setCapability("deviceName", getDeviceName());
         capabilities.setCapability("automationName", getAutomationName());
-        capabilities.setCapability("app", System.getProperty("user.dir") + "/src/test/resources/Apps/android/" + getApp());
+        capabilities.setCapability("app", "/Users/ludmillachellemben/Documents/gen2App/android/" + getApp());
         return capabilities;
     }
 
