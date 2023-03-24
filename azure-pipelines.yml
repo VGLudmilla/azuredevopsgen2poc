@@ -21,3 +21,8 @@ steps:
 - task: CmdLine@2
   inputs:
     script: './gradlew'
+- task: JavaToolInstaller@0
+  inputs:
+    versionSpec: '11'
+    jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'PreInstalled'
