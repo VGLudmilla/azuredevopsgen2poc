@@ -12,6 +12,7 @@ buildscript {
 plugins {
     id 'java-library'
     id 'idea'
+    id 'java'
 }
 
 group 'org.example'
@@ -76,6 +77,22 @@ task cucumber(type: Test) {
 }
 
 
+
+
 test {
     useJUnitPlatform()
 }
+
+//task pipeline(type: Test) {
+//    // Use JUnit Platform for unit tests.
+//    useJUnitPlatform()
+//    // OPTIONAL: Improve readability of test names in reports
+//    systemProperty("cucumber.junit-platform.naming-strategy", "long")
+//    filter {
+//        includeTestsMatching "airnz.gen2.devicefarmpoc.autotests.features"
+//    }
+//    reports {
+//        junitXml.enabled = true
+//        junitXml.destination = file("output/reports/tests/junit")
+//    }
+//}

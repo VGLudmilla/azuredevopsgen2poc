@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
         //This is the location of the StepDefs folder
         glue = {"airnz.gen2.devicefarmpoc.autotests.stepdefs"},
         publish = true,
-        tags = "@regression")
+        tags = "@level1")
 
 @RunWith(Cucumber.class)
 
