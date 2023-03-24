@@ -1,0 +1,79 @@
+buildscript {
+    repositories {
+        maven { url 'https://artifactory.aws-ocm.nz/plugins-release' }
+        maven { url 'https://artifactory.aws-ocm.nz/private-libs-release' }
+        maven { url 'https://artifactory.aws-ocm.nz/plugins-release' }
+        maven { url 'https://artifactory.aws-ocm.nz/libs-snapshot' }
+        mavenLocal()
+    }
+
+}
+
+plugins {
+    id 'java-library'
+    id 'idea'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+compileJava {
+    sourceCompatibility = '11'
+    targetCompatibility = '11'
+}
+
+
+ext {
+    cucumberVersion = '7.3.3'
+    appiumVersion = '8.2.0'
+    seleniumVersion = "4.2.2"
+    guiceVersion = "5.1.0"
+    extentVersion = "5.0.9"
+    extentCucumberAdapter = '1.5.1'
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+dependencies {
+    testImplementation "io.cucumber:cucumber-java:${cucumberVersion}"
+    testImplementation "io.cucumber:cucumber-junit:${cucumberVersion}"
+    testImplementation "io.cucumber:cucumber-core:${cucumberVersion}"
+    testImplementation "io.cucumber:cucumber-picocontainer:${cucumberVersion}"
+    implementation "io.appium:java-client:$appiumVersion"
+    implementation "org.seleniumhq.selenium:selenium-java:${seleniumVersion}"
+    implementation "org.seleniumhq.selenium:selenium-support:${seleniumVersion}"
+    implementation "org.seleniumhq.selenium:selenium-api:${seleniumVersion}"
+    implementation "com.google.inject:guice:${guiceVersion}"
+    implementation 'net.masterthought:cucumber-reporting:5.7.0'
+    implementation "com.aventstack:extentreports:${extentVersion}"
+    implementation "tech.grasshopper:extentreports-cucumber7-adapter:${extentCucumberAdapter}"
+    implementation 'com.browserstack:browserstack-local-java:1.0.6'
+    compileOnly 'com.browserstack:browserstack-java-sdk:latest.release'
+
+}
+
+
+task cucumber(type: Test) {
+//    dependsOn assemble, compileTestJava
+//    doLast {
+//        javaexec {
+//            main = "io.cucumber.core.cli.Main"
+//            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+//            args = ['--plugin', 'pretty',
+//                    '--glue', 'airnz.gen2.devicefarmpoc.autotests.stepdefs', 'src/test/java/etr/airnz/gen2/devicefarmpoc/autotests/features', '--tags', [project.getProperty("tags")]]
+//        }
+//    }
+}
+
+
+test {
+    useJUnitPlatform()
+}
