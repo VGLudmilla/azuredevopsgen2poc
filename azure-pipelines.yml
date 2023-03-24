@@ -7,19 +7,16 @@ trigger:
 - master
 
 pool:
-  vmImage: macOS-latest
+  vmImage: 'macOS-latest'
 
 steps:
 - task: Gradle@2
   inputs:
-    gradleWrapperFile: '$(PROJECT_ROOT_PATH)/gen2devicefarmpoc/gradlew'
-- task: CmdLine@2
-  inputs:
-    script: './gradlew'
-    options: '--debug'
+    gradleWrapperFile: 'gradlew'
     gradleOptions: '-Xmx3072m'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
     publishJUnitResults: false
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'assembleDebug'
+- task: CmdLine@2
+  inputs:
+    script: './gradlew'
