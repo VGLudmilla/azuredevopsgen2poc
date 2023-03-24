@@ -20,4 +20,4 @@ steps:
     tasks: 'assembleRelease'
 - task: CmdLine@2
   inputs:
-    script: './gradlew'
+    script: './gradlew test'
