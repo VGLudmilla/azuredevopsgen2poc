@@ -43,6 +43,8 @@ configurations {
 }
 
 dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
     testImplementation "io.cucumber:cucumber-java:${cucumberVersion}"
     testImplementation "io.cucumber:cucumber-junit:${cucumberVersion}"
     testImplementation "io.cucumber:cucumber-core:${cucumberVersion}"
@@ -62,15 +64,15 @@ dependencies {
 
 
 task cucumber(type: Test) {
-//    dependsOn assemble, compileTestJava
-//    doLast {
-//        javaexec {
-//            main = "io.cucumber.core.cli.Main"
-//            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-//            args = ['--plugin', 'pretty',
-//                    '--glue', 'airnz.gen2.devicefarmpoc.autotests.stepdefs', 'src/test/java/etr/airnz/gen2/devicefarmpoc/autotests/features', '--tags', [project.getProperty("tags")]]
-//        }
-//    }
+    dependsOn assemble, compileTestJava
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'pretty',
+                    '--glue', 'airnz.gen2.devicefarmpoc.autotests.stepdefs', 'src/test/java/etr/airnz/gen2/devicefarmpoc/autotests/features', '--tags', [project.getProperty("tags")]]
+        }
+    }
 }
 
 
