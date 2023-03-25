@@ -13,6 +13,5 @@ public class WelcomeScreenStepDefs {
     @Given("I tap skip on the Splash screen")
     public void iTapSkipOnTheSplashScreen() {
             splashScreen.tapSkipButton();
-            System.out.println("Verify the commit");
     }
 }
